@@ -12,4 +12,4 @@ link: https://smallbasic-publicwebsite-code.azurewebsites.net/
 [day_counter.sb]: This program counted the number of your elapsed days,
     given your date of birth.  Interestingly, I had written it with
     quite a robust input validation system, and it also factors leap
-    years and variable month lengths into account.
+    years, variable month lengths, and future days (!) into account.
