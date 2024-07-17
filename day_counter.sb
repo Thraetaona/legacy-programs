@@ -1,0 +1,115 @@
+start:
+Year3 = Clock.Year
+Month3 = Clock.Month
+Day3 = Clock.Day
+Start1:
+TextWindow.Write("When Is your Birthyear (Example : 1998) : ")
+Year = TextWindow.Readnumber()
+If (Year > Clock.Year) Then
+  TextWindow.ForegroundColor = "Red"
+    TextWindow.Writeline("Invalid Input Year Cant Be More Than " + Year3)
+    TextWindow.ForegroundColor = "gray"
+    Goto Start1
+  Endif
+    If (Year < 0) Then
+        TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Year Cant Be Less Than 0")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start1
+    Endif
+    Start2:
+    TextWindow.Write("What Is Your Birthmonth (Example : 4) : ")
+    Month = TextWindow.Readnumber()
+  If (Month > 12) Then
+    TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("Invalid Input Month Cant Be More Than 12")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start2
+  Endif
+    If (Month < 1) Then
+        TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Month Cant Be Less Than 1")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start2
+Start3:
+Endif
+monthwith31days[1] = 1
+monthwith31days[2] = 3
+monthwith31days[3] = 5
+monthwith31days[4] = 7
+monthwith31days[5] = 8
+monthwith31days[6] = 10
+monthwith31days[7] = 12
+Monthwith30days[1] = 4
+Monthwith30days[2] = 6
+Monthwith30days[3] = 9
+Monthwith30days[4] = 11
+For f = 1 To 7
+  If (Month = monthwith31days[f]) Then 
+    Goto  Day31
+  EndIf
+EndFor
+  If (Month = 2) Then
+    Goto  Day28
+  EndIf
+  For a = 1 to 4
+    If (Month = Monthwith30days[a]) Then
+    Goto  Day30
+  EndIf
+  endfor
+  Day30: 
+  TextWindow.Write("What Is Your Birthday (Example : 30) : ")
+  Day = TextWindow.ReadNumber()
+  If (Day > 30) Then
+    TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Day Cant Be More Than 30")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start3
+  Endif
+    Goto LastStep
+  Day28:
+    TextWindow.Write("What Is Your Birthday (Example : 28) : ")
+  Day = TextWindow.ReadNumber()
+  If (Day > 28) Then
+    TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Day Cant Be More Than 28")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start3
+  Endif
+  Goto LastStep
+  Day31:
+    TextWindow.Write("What Is Your Birthday (Example : 31) : ")
+  Day = TextWindow.ReadNumber()
+  If (Day > 31) Then
+    TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Day Cant Be More Than 31")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start3
+  Endif
+  LastStep:
+  If (Day <1) Then
+        TextWindow.ForegroundColor = "Red"
+    TextWindow.WriteLine("invalid Input Day Cant Be Less Than 1")
+    TextWindow.ForegroundColor = "gray"
+    Goto Start3
+    Endif
+Day8 = Day3 + Month3*30 + Year3*365
+Day9 = Day + Month*30 + Year*365
+Day0 = Day8 - Day9
+If (Day0 = 1) Then 
+  TextWindow.WriteLine("You Are " +  Day0+ " Day Old")
+endif
+if (Day0 > 1) Then
+  TextWindow.WriteLine("You Are " +  Day0+ " Days Old")
+EndIf
+If (Day0 = 0) Then
+  TextWindow.WriteLine("You Are Less Than a Day Old")
+endif
+If (Day0 < -1) Then
+  DayPositive0 = Day0*-1
+  TextWindow.WriteLine("You Will Come To This World In " + DayPositive0 + " Days ")
+endif
+If (Day0 = -1) Then
+  TextWindow.WriteLine("You Will Come To This World In 1 Day ")
+  endif
+  Goto start
